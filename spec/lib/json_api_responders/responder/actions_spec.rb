@@ -16,7 +16,7 @@ describe JsonApiResponders::Responder do
       json: {
         errors: [
           {
-            title: 'json_api.errors.unprocessable_entity.title',
+            title: 'json_api.errors.unprocessable_content.title',
             detail: "Name can't be blank",
             source: { parameter: :name, pointer: 'data/attributes/name' }
           }
@@ -60,9 +60,9 @@ describe JsonApiResponders::Responder do
       end
 
       context 'when resource invalid' do
-        let(:status) { :unprocessable_entity }
+        let(:status) { :unprocessable_content }
 
-        it 'renders unprocessable_entity' do
+        it 'renders unprocessable_content' do
           expect(controller).to receive(:render).with(error_options)
           responder.respond!
         end
@@ -83,9 +83,9 @@ describe JsonApiResponders::Responder do
       end
 
       context 'when resource invalid' do
-        let(:status) { :unprocessable_entity }
+        let(:status) { :unprocessable_content }
 
-        it 'renders unprocessable_entity' do
+        it 'renders unprocessable_content' do
           expect(controller).to receive(:render).with(error_options)
           responder.respond!
         end
@@ -149,9 +149,9 @@ describe JsonApiResponders::Responder do
       end
 
       context 'when resource invalid' do
-        let(:status) { :unprocessable_entity }
+        let(:status) { :unprocessable_content }
 
-        it 'renders unprocessable_entity' do
+        it 'renders unprocessable_content' do
           expect(controller).to receive(:render).with(error_options)
           responder.respond!
         end
@@ -172,9 +172,9 @@ describe JsonApiResponders::Responder do
       end
 
       context 'when resource invalid' do
-        let(:status) { :unprocessable_entity }
+        let(:status) { :unprocessable_content }
 
-        it 'renders unprocessable_entity' do
+        it 'renders unprocessable_content' do
           expect(controller).to receive(:render).with(error_options)
           responder.respond!
         end

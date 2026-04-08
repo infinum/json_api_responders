@@ -40,7 +40,7 @@ module JsonApiResponders
   end
 
   def parameter_missing!(reason)
-    respond_with_error(:unprocessable_entity, reason.message)
+    respond_with_error(:unprocessable_content, reason.message)
   end
 
   def json_api_parse_options

@@ -44,7 +44,7 @@ This method requires a resource as a parameter, and you can pass some options if
 The above example will render the **User** object.
 
     user = User.first
-    respond_with user, on_error: { 
+    respond_with user, on_error: {
     : :unauthorized, detail: 'Invalid user or password' }
 
 The above example will render an **Error** response if an error would occur.
@@ -120,7 +120,7 @@ en:
       forbidden:
         title: Unauthorized
         detail: User is not authorized to use this resource
-      unprocessable_entity:
+      unprocessable_content:
         title: Unprocessable Entity
         details: Cannot process request
       conflict:

@@ -15,7 +15,7 @@ module JsonApiResponders
 
       def respond_to_create_action
         if has_errors?
-          self.status ||= :unprocessable_entity
+          self.status ||= :unprocessable_content
           render_error
         else
           self.status ||= :created
@@ -25,7 +25,7 @@ module JsonApiResponders
 
       def respond_to_update_action
         if has_errors?
-          self.status ||= :unprocessable_entity
+          self.status ||= :unprocessable_content
           render_error
         else
           self.status ||= :ok

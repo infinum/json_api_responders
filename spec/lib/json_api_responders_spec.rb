@@ -46,7 +46,7 @@ describe JsonApiResponders do
           content_type: 'application/vnd.api+json',
           json: { errors: [
             { detail: 'Unauthorized' },
-            { title: 'json_api.errors.unprocessable_entity.title',
+            { title: 'json_api.errors.unprocessable_content.title',
               detail: "Name can't be blank",
               source: { parameter: :name, pointer: 'data/attributes/name' } }
           ] }
