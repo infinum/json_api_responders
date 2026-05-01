@@ -1,3 +1,5 @@
+require 'json_api_responders/config'
+
 module JsonApiResponders
   module Errors
     class UnknownHTTPStatus < StandardError
@@ -63,6 +65,20 @@ module JsonApiResponders
     class StatusNotDefined < StandardError
       def message
         'Status is not defined'
+      end
+    end
+
+    class InvalidDatabaseAdapterError < StandardError
+      attr_reader :adapter
+
+      def initialize(adapter)
+        @adapter = adapter
+        super(message)
+      end
+
+      def message
+        "Unknown database adapter '#{adapter}'.\n"\
+        "Accepted adapters are #{JsonApiResponders::Config::ADAPTERS.join(', ')}"
       end
     end
   end

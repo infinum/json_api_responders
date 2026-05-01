@@ -3,6 +3,13 @@ module ActiveRecord
   end
 end
 
+module Mongoid
+  module Errors
+    class DocumentNotFound < StandardError
+    end
+  end
+end
+
 module ActionController
   class ParameterMissing
   end

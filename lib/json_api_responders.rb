@@ -19,7 +19,11 @@ module JsonApiResponders
   end
 
   def self.included(base)
-    base.rescue_from ActiveRecord::RecordNotFound, with: :record_not_found!
+    if self.config.adapter == :active_record
+      base.rescue_from ActiveRecord::RecordNotFound, with: :record_not_found!
+    elsif self.config.adapter == :mongoid
+      base.rescue_from Mongoid::Errors::DocumentNotFound, with: :record_not_found!
+    end
     base.rescue_from ActionController::ParameterMissing, with: :parameter_missing!
   end
 

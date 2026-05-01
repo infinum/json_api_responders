@@ -3,6 +3,8 @@ module JsonApiResponders
     attr_reader :required_options
     DEFAULT_RENDER_METHOD = :json
     RENDER_METHODS = [:jsonapi, :json]
+    DEFAULT_ADAPTER = :active_record
+    ADAPTERS = [:active_record, :mongoid]
 
     def required_options=(opts = {})
       @required_options = opts
@@ -28,6 +30,18 @@ module JsonApiResponders
         @render_method = render_method
       else
         raise JsonApiResponders::Errors::InvalidRenderMethodError, render_method
+      end
+    end
+
+    def adapter
+      @adapter || DEFAULT_ADAPTER
+    end
+
+    def adapter=(adapter)
+      if ADAPTERS.include?(adapter)
+        @adapter = adapter
+      else
+        raise JsonApiResponders::Errors::InvalidDatabaseAdapterError, adapter
       end
     end
 

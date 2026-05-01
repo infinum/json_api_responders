@@ -12,7 +12,7 @@ This gem gives a few convenient methods for working with JSONAPI. It is inspired
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'json_api_responders'
+gem 'json_api_responders', git: 'https://github.com/aziflaj/json_api_responders.git', branch: 'mongoid'
 ```
 
 And then execute:
@@ -58,7 +58,7 @@ This method requires HTTP status code and an optional parameter explaining the e
 
 
 ## Configuration
-Currently you can only configure which options are required to be passed through the `respond_with` method. These required options are categorized by the controller's actions. Bellow you can find an example:
+Currently you can configure which options are required to be passed through the `respond_with` method and the datadabase adapter. These required options are categorized by the controller's actions. Below you can find an example:
 
     # config/initializers/json_api_responders.rb
     JsonApiResponders.configure do |config|
@@ -66,6 +66,7 @@ Currently you can only configure which options are required to be passed through
           index: [:each_serializer],
           create: [:serializer]
         }
+        config.adapter = :mongoid # default is :active_record
     end
 
     # app/controllers/v1/users_controller.rb
@@ -75,6 +76,8 @@ Currently you can only configure which options are required to be passed through
     end
 
 If `:serializer` was left out of the above `respond_with` method you would see the `JsonApiResponders::Errors::RequiredOptionMissingError` be raised.
+
+Currently, the only database adaptors are Active Record and Mongoid.
 
 ## Responses
 
